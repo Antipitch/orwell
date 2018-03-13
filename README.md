@@ -8,7 +8,6 @@ Orwell is a validator package for the Go programming language.
 - Lots of cross-field validation rules (e.g. dependant struct fields)
 - Pure Go, no tags
 - No third party dependencies
-- Numeric/ mathematical rules work with strings (if they're convertible)
 - Avoids complex regexes and reflection whenever possible
 
 
@@ -83,24 +82,33 @@ err := o.ValidateStruct(&s,
 )
 ````
 ### Error handling
-Orwell exposes three error interfaces: InternalError, IterableError and FieldableError (all of them implement Go's error interface).
+Orwell exports three error interfaces: InternalError, IterableError and FieldableError (all of them implement Go's error interface).
 
-Orwell's Validate method will return a standard Go error, nothing special here. The ValidateStruct method will either return an InternalError or an IterableError. Using type ascertion lets you proceed according to your requirements.
-
-Example:
+Orwell's Validate method will -for now- return a standard Go error, nothing special here. The ValidateStruct method will either return an InternalError or an IterableError. Proceed according to your needs with type assertion:
 ````
 err := v.ValidateStruct(
     // validate some struct
 )
 
 if err != nil {
-    if ie, ok := err.(orwell.IterableError); ok {
-        l := ie.Len()
+    // don't react specifically, maybe log
+    log.Print(err.Error())
+
+    // internal error
+    internalError, ok := err.(orwell.InternalError)
+    if ok {
+        // do something with internal error
+    }
+
+    // iterable error
+    iterableError, ok := err.(orwell.IterableError)
+    if ok {
+        l := iterableError.Len()
         for i := 0; i < l; i++ {
-            if fe, ok := ie.ValueAt(i).(orwell.FieldableError); ok {
+            if fe, ok := iterableError.ValueAt(i).(orwell.FieldableError); ok {
                 f := fe.FieldName
                 j := fe.JSONName
-                e := fe.Eror()
+                e := fe.Error()
             }
         }
     }
@@ -119,11 +127,10 @@ if err != nil {
 - `XAnd(arg interface{})` Required when arg is neither nil nor empty
 - `XAndOr(arg interface{}, args ...interface{})` Required when arg is neither nil nor empty and all args are nil or empty
 - `XGt(arg interface{}, arg int)` Required when 1st arg is greater than 2nd arg
-- `XIn(arg interface{}, args ...interface{})` Required when arg is equal to one of args
 - `XLt(arg interface{}, arg int)` Required when 1st arg is lower than 2nd arg
 - `XNor(args ...interface{})` Must be nil or empty when all args are nil or empty
 - `XNot(arg interface{})` Must be nil or empty when arg is neither nil nor empty
 - `XOr(args ...interface{})` Required when all args are nil or empty
 
-Thankful respect to [asaskevich/govalidator](https://github.com/asaskevich/govalidator) and [go-ozzo/ozzo-validation](https://github.com/go-ozzo/ozzo-validation) for inspiration! Feel free to use and contribute.
+Orwell is a new project and not stable, yet. Don't use it in production! Thankful respects to [asaskevich/govalidator](https://github.com/asaskevich/govalidator) and [go-ozzo/ozzo-validation](https://github.com/go-ozzo/ozzo-validation) for inspiration. Feel free to contribute.
 
