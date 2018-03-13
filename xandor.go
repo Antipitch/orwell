@@ -26,7 +26,7 @@ func (r *xAndOr) Apply(value interface{}) error {
 	}
 
 	if len(r.ors) == 0 {
-		return nil
+		return fmt.Errorf(r.msg)
 	}
 
 	for _, or := range r.ors {

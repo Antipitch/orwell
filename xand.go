@@ -20,7 +20,7 @@ type xAnd struct {
 
 // Apply func
 func (r *xAnd) Apply(value interface{}) error {
-	if !NOE(r.and) && !NOE(value) {
+	if !NOE(r.and) && NOE(value) {
 		return fmt.Errorf(r.msg)
 	}
 

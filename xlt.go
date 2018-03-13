@@ -5,23 +5,23 @@ import (
 )
 
 // XLt func
-func (*orwell) XLt(v interface{}, lt int) *XLt {
-	return &XLt{
+func (*orwell) XLt(v interface{}, lt int) *xLt {
+	return &xLt{
 		v:   v,
 		lt:  lt,
-		msg: "Validation error for 'XGt' rule",
+		msg: "Validation error for 'xGt' rule",
 	}
 }
 
-// XLt struct
-type XLt struct {
+// xLt struct
+type xLt struct {
 	v   interface{}
 	lt  int
 	msg string
 }
 
 // Apply rule
-func (r *XLt) Apply(value interface{}) error {
+func (r *xLt) Apply(value interface{}) error {
 	v, err := ToInt64(r.v)
 
 	if err != nil {
