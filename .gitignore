@@ -12,3 +12,12 @@
 
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
+
+# Ide
+.idea
+.vscode
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
