@@ -128,7 +128,9 @@ if err != nil {
 - `XAnd(arg interface{})` Required when arg is neither nil nor empty
 - `XAndOr(arg interface{}, args ...interface{})` Required when arg is neither nil nor empty and all args are nil or empty
 - `XGt(arg1 interface{}, arg2 int)` Required when arg1 is greater than arg2
+- `XGtOr(arg1 interface{}, arg2 int, args ...interface{})` Required when arg1 is greater than arg2 and all args are nil or empty
 - `XLt(arg1 interface{}, arg2 int)` Required when arg1 is lower than arg2
+- `XLtOr(arg1 interface{}, arg2 int, args ...interface{})` Required when arg1 is lower than arg2 and all args are nil or empty
 - `XNor(args ...interface{})` Must be nil or empty when all args are nil or empty
 - `XNot(arg interface{})` Must be nil or empty when arg is neither nil nor empty
 - `XOr(args ...interface{})` Required when all args are nil or empty
