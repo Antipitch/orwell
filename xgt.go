@@ -5,7 +5,7 @@ import (
 )
 
 // XGt func
-func (*orwell) XGt(v interface{}, gt int) *xGt {
+func (*Orwell) XGt(v interface{}, gt int) *xGt {
 	return &xGt{
 		xv:  v,
 		gt:  gt,

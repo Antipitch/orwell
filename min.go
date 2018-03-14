@@ -5,7 +5,7 @@ import (
 )
 
 // Max func
-func (*orwell) Min(arg int) *min {
+func (*Orwell) Min(arg int) *min {
 	return &min{
 		min: arg,
 		msg: "Validation error for 'Min' rule",

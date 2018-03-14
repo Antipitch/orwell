@@ -5,7 +5,7 @@ import (
 )
 
 // DivBy func
-func (*orwell) DivBy(div int) *divBy {
+func (*Orwell) DivBy(div int) *divBy {
 	return &divBy{
 		div: div,
 		msg: "Validation error for 'DivBy' rule",

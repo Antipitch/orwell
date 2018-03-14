@@ -5,7 +5,7 @@ import (
 )
 
 // XOr func
-func (*orwell) XOr(ors ...interface{}) *xOr {
+func (*Orwell) XOr(ors ...interface{}) *xOr {
 	return &xOr{
 		ors: ors,
 		msg: "Validation error for 'XOr' rule",

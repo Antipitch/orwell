@@ -5,7 +5,7 @@ import (
 )
 
 // XOrAnd func
-func (*orwell) XAndOr(and interface{}, ors ...interface{}) *xAndOr {
+func (*Orwell) XAndOr(and interface{}, ors ...interface{}) *xAndOr {
 	return &xAndOr{
 		and: and,
 		ors: ors,

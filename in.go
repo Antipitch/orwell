@@ -5,7 +5,7 @@ import (
 )
 
 // In func
-func (*orwell) In(args ...interface{}) *in {
+func (*Orwell) In(args ...interface{}) *in {
 	return &in{
 		args: args,
 		msg:  fmt.Sprintf("Validation error for 'In' rule"),

@@ -5,7 +5,7 @@ import (
 )
 
 // Max func
-func (*orwell) Max(arg int) *max {
+func (*Orwell) Max(arg int) *max {
 	return &max{
 		max: arg,
 		msg: "Validation error for 'Max' rule",

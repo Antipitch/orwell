@@ -5,7 +5,7 @@ import (
 )
 
 // XAnd func
-func (*orwell) XAnd(and interface{}) *xAnd {
+func (*Orwell) XAnd(and interface{}) *xAnd {
 	return &xAnd{
 		and: and,
 		msg: fmt.Sprintf("Validation error for 'XAnd' rule"),

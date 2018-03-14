@@ -5,7 +5,7 @@ import (
 )
 
 // Required func
-func (*orwell) Required() *required {
+func (*Orwell) Required() *required {
 	return &required{
 		msg: fmt.Sprintf("Validation error for 'Required' rule"),
 	}

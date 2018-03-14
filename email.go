@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-// IsEMail func
-func (*orwell) Email(doLookUp bool) *email {
+// EMail func
+func (*Orwell) Email(doLookUp bool) *email {
 	return &email{
 		doLookUp: doLookUp,
 		msg:      "Validation error for 'Email' rule",

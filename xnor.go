@@ -5,7 +5,7 @@ import (
 )
 
 // XNor func
-func (*orwell) XNor(nors ...interface{}) *xNor {
+func (*Orwell) XNor(nors ...interface{}) *xNor {
 	return &xNor{
 		nors: nors,
 		msg:  fmt.Sprintf("Validation error for 'XNor' rule"),

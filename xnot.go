@@ -5,7 +5,7 @@ import (
 )
 
 // XNot func
-func (*orwell) XNot(not interface{}) *xNot {
+func (*Orwell) XNot(not interface{}) *xNot {
 	return &xNot{
 		not: not,
 		msg: fmt.Sprintf("Validation error for 'XNot' rule"),
