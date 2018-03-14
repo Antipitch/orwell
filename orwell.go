@@ -30,7 +30,8 @@ type (
 		ValueAt(int) error
 	}
 
-	orwell struct{}
+	// Orwell struct
+	Orwell struct{}
 
 	fieldRules struct {
 		fieldPtr interface{}
@@ -38,13 +39,13 @@ type (
 	}
 )
 
-// NewOrwell func
-func NewOrwell() *orwell {
-	return &orwell{}
+// NewValidator func
+func NewValidator() *Orwell {
+	return &Orwell{}
 }
 
 // Validate func
-func (o *orwell) Validate(v interface{}, rules ...Rule) error {
+func (o *Orwell) Validate(v interface{}, rules ...Rule) error {
 	for _, r := range rules {
 		if err := r.Apply(v); err != nil {
 			return err
@@ -55,7 +56,7 @@ func (o *orwell) Validate(v interface{}, rules ...Rule) error {
 }
 
 // ValidateStruct func
-func (o *orwell) ValidateStruct(structPtr interface{}, fieldRules ...*fieldRules) error {
+func (o *Orwell) ValidateStruct(structPtr interface{}, fieldRules ...*fieldRules) error {
 	structElem := reflect.ValueOf(structPtr).Elem()
 	var structValidationError structValidationError
 
@@ -78,7 +79,7 @@ func (o *orwell) ValidateStruct(structPtr interface{}, fieldRules ...*fieldRules
 }
 
 // FieldRules func
-func (o *orwell) FieldRules(field interface{}, rules ...Rule) *fieldRules {
+func (o *Orwell) FieldRules(field interface{}, rules ...Rule) *fieldRules {
 	return &fieldRules{
 		fieldPtr: field,
 		rules:    rules,
