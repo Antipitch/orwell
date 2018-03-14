@@ -5,9 +5,9 @@ import (
 )
 
 // XLt func
-func (*Orwell) XLt(v interface{}, lt int) *xLt {
+func (*Orwell) XLt(xv interface{}, lt int) *xLt {
 	return &xLt{
-		xv:  v,
+		xv:  xv,
 		lt:  lt,
 		msg: "Validation error for 'xGt' rule",
 	}

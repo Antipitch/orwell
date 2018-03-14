@@ -5,9 +5,9 @@ import (
 )
 
 // XGt func
-func (*Orwell) XGt(v interface{}, gt int) *xGt {
+func (*Orwell) XGt(xv interface{}, gt int) *xGt {
 	return &xGt{
-		xv:  v,
+		xv:  xv,
 		gt:  gt,
 		msg: fmt.Sprintf("Validation error for 'XGt' rule"),
 	}
@@ -22,6 +22,10 @@ type xGt struct {
 
 // Apply rule
 func (r *xGt) Apply(value interface{}) error {
+	if !NOE(value) {
+		return nil
+	}
+
 	xv, isNil := IsNil(r.xv)
 	if isNil || IsEmpty(xv) {
 		return nil
@@ -32,7 +36,7 @@ func (r *xGt) Apply(value interface{}) error {
 		return fmt.Errorf("%s: %s", r.msg, err.Error())
 	}
 
-	if xvInt > int64(r.gt) && NOE(value) {
+	if xvInt > int64(r.gt) {
 		return fmt.Errorf(r.msg)
 	}
 

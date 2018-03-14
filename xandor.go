@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// XOrAnd func
+// XAndOr func
 func (*Orwell) XAndOr(and interface{}, ors ...interface{}) *xAndOr {
 	return &xAndOr{
 		and: and,
