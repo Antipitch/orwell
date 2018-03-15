@@ -62,11 +62,11 @@ func (o *Orwell) ValidateStruct(structPtr interface{}, fieldRules ...*fieldRules
 
 	for _, fieldRule := range fieldRules {
 		fieldValue := reflect.ValueOf(fieldRule.fieldPtr)
-		fieldName, jsonName := field(structElem, fieldValue)
 		if err := o.Validate(fieldValue.Elem().Interface(), fieldRule.rules...); err != nil {
 			if ie, ok := err.(InternalError); ok {
 				return ie
 			}
+			fieldName, jsonName := field(structElem, fieldValue)
 			structValidationError.errors = append(structValidationError.errors, NewValidationError(fieldName, jsonName, err.Error()))
 		}
 	}
