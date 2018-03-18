@@ -66,7 +66,7 @@ func (o *Orwell) ValidateStruct(structPtr interface{}, fieldRules ...*fieldRules
 			if ie, ok := err.(InternalError); ok {
 				return ie
 			}
-			fieldName, jsonName := field(structElem, fieldValue)
+			fieldName, jsonName := names(structElem, fieldValue)
 			structValidationError.errors = append(structValidationError.errors, NewValidationError(fieldName, jsonName, err.Error()))
 		}
 	}
@@ -86,9 +86,9 @@ func (o *Orwell) FieldRules(field interface{}, rules ...Rule) *fieldRules {
 	}
 }
 
-func field(structElem reflect.Value, fieldValue reflect.Value) (string, string) {
-	var fieldName string
-	var jsonName string
+var fieldName, jsonName string
+
+func names(structElem reflect.Value, fieldValue reflect.Value) (string, string) {
 	fieldPointer := fieldValue.Pointer()
 	for i := 0; i < structElem.NumField(); i++ {
 		structField := structElem.Type().Field(i)
@@ -101,9 +101,8 @@ func field(structElem reflect.Value, fieldValue reflect.Value) (string, string) 
 		}
 		switch structElem.Field(i).Kind() {
 		case reflect.Struct:
-			return field(structElem.Field(i), fieldValue)
+			names(structElem.Field(i), fieldValue)
 		}
 	}
-
 	return fieldName, jsonName
 }
