@@ -51,7 +51,7 @@ func NewStructValidationError() *structValidationError {
 }
 
 func (e structValidationError) Error() string {
-	return "Validation of struct returned erros"
+	return "Validation of struct returned errors"
 }
 
 func (e structValidationError) Len() int {
