@@ -122,6 +122,7 @@ if err != nil {
 - `Email(arg bool)` Must be RFC 5322 compliant address (uses net/mail.ParseAddress and optionally net.LookupMX)
 - `Max(arg int)` Must not be greater than arg
 - `Min(arg int)` Must not be lower than arg
+- `Match(arg string)` Must match regular expression described by arg
 - `NotNil()` Must not be nil
 - `Required()` Must neither be nil nor empty
 ### X-Rules
