@@ -5,7 +5,7 @@ Orwell is a validator package for the Go programming language.
 - Quick and simple to use
 - Easy to extend with custom validation rules
 - Some of the most common validation rules baked in
-- Cross-field validation rules (e.g. dependant struct fields)
+- Many cross-field validation rules (e.g. dependant struct fields)
 - Pure Go, no tags
 - No third party dependencies
 - Avoids complex regexes and reflection whenever possible
@@ -120,6 +120,8 @@ if err != nil {
 - `DivBy(arg int)` Must be dividable by arg
 - `In(args ...interface{})` Must be equal to one of args
 - `Email(arg bool)` Must be RFC 5322 compliant address (uses net/mail.ParseAddress and optionally net.LookupMX)
+- `LengthMax(arg int)` Must be of length not greater than arg
+- `LengthMin(arg int)` Must be of length not less than arg
 - `Max(arg int)` Must not be greater than arg
 - `Min(arg int)` Must not be lower than arg
 - `Match(arg string)` Must match regular expression described by arg

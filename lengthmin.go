@@ -5,22 +5,21 @@ import (
 	"unicode/utf8"
 )
 
-// Length func
-func (*Orwell) Length(min, max int) *length {
-	return &length{
+// LengthMin func
+func (*Orwell) LengthMin(min int) *lengthMin {
+	return &lengthMin{
 		min: min,
-		max: max,
-		msg: "Validation error for 'length' rule",
+		msg: "Validation error for 'LengthMin' rule",
 	}
 }
 
-type length struct {
-	min, max int
-	msg      string
+type lengthMin struct {
+	min int
+	msg string
 }
 
 // Apply func
-func (r *length) Apply(value interface{}) error {
+func (r *lengthMin) Apply(value interface{}) error {
 	v, isNil := IsNil(value)
 	if isNil || IsEmpty(v) {
 		return nil
@@ -36,7 +35,7 @@ func (r *length) Apply(value interface{}) error {
 		return fmt.Errorf("%s: %s", r.msg, err.Error())
 	}
 
-	if l < r.min || l > r.max {
+	if l < r.min {
 		return fmt.Errorf(r.msg)
 	}
 
