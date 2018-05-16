@@ -6,7 +6,7 @@ import (
 )
 
 // LengthMax func
-func (*Orwell) c(max int) *lengthMax {
+func (*Orwell) LengthMax(max int) *lengthMax {
 	return &lengthMax{
 		max: max,
 		msg: "Validation error for 'LengthMax' rule",
