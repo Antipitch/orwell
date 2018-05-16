@@ -125,3 +125,13 @@ func ToFloat64(v interface{}) (float64, error) {
 
 	return 0, fmt.Errorf("Argument could not be converted to float64")
 }
+
+// LengthOf func
+func LengthOf(value interface{}) (int, error) {
+	v := reflect.ValueOf(value)
+	switch v.Kind() {
+	case reflect.String, reflect.Array, reflect.Slice, reflect.Map:
+		return v.Len(), nil
+	}
+	return 0, fmt.Errorf("Could not determine length of argument type %v", v.Kind())
+}
