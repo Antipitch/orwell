@@ -135,3 +135,7 @@ func LengthOf(value interface{}) (int, error) {
 	}
 	return 0, fmt.Errorf("Could not determine length of argument type %v", v.Kind())
 }
+
+func DeepEqual(s interface{}, c interface{}) bool {
+	return reflect.DeepEqual(s, c)
+}
