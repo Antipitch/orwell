@@ -133,6 +133,7 @@ if err != nil {
 - `XGt(arg1 interface{}, arg2 int)` Required when arg1 is greater than arg2
 - `XGtEql(arg1 interface{}, arg2 int, arg3 interface{}, arg4 interface{})` Required when arg1 is greater than arg2 and arg3 is equal to arg4
 - `XGtEqlOr(arg1 interface{}, arg2 int, arg3 interface{}, arg4 interface{}, args ...interface{})` Required when arg1 is greater than arg2, arg3 is equal to arg4 and all args are nil or empty
+- `XGtAndOr(arg1 interface{}, arg2 int, arg3 interface{}, args ...interface{})` Required when arg1 is greater than arg2, arg3 is neither nil nor empty and all args are nil or empty
 - `XGtOr(arg1 interface{}, arg2 int, args ...interface{})` Required when arg1 is greater than arg2 and all args are nil or empty
 - `XLt(arg1 interface{}, arg2 int)` Required when arg1 is lower than arg2
 - `XLtOr(arg1 interface{}, arg2 int, args ...interface{})` Required when arg1 is lower than arg2 and all args are nil or empty
